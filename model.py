@@ -15,12 +15,12 @@ class Besedilo:
         else:
             self.geslo = geslo
             self.dolzina_gesla = len(self.geslo)
-        self.opravilo = opravilo
+        
 
     def __repr__(self):
         return f"Besedilo: {self.besedilo}"
 
-    def __str__(Self):
+    def __str__(self):
         return f"{self.besedilo}"
 
     def __len__(self):
@@ -28,19 +28,27 @@ class Besedilo:
 
     ###############################################################################################
 
+    @staticmethod
     def premik_znaka_desno(i, n, abc):
         indeks = abc.index(i)
-        nov_indeks = indeks + i
+        nov_indeks = indeks + int(n)
         while nov_indeks >= len(abc):
             nov_indeks -= len(abc)
         return nov_indeks
 
+    @staticmethod
     def premik_znaka_levo(i, n, abc):
         indeks = abc.index(i)
-        nov_indeks = indeks - i
+        nov_indeks = indeks - int(n)
         while nov_indeks < 0:
             nov_indeks += len(abc)
         return nov_indeks
+
+    def ustreznost_sub(self):
+        for i in range(self.dolzina_gesla):
+            if self.geslo[i] not in stevke:
+                return False
+        return True
     
     def rot13(self):
         tekst = self.besedilo.lower()
@@ -52,57 +60,70 @@ class Besedilo:
                 nov_tekst += tekst[i]
         return nov_tekst
 
+    def zakodiraj_cezar(self):
+        for i in range(self.dolzina):
+            if tekst[i] in abeceda:
+                nov_tekst += abeceda[premik_znaka_desno(i, self.geslo, abeceda)]
+                elif tekst[i] in stevke:
+                    nov_tekst += stevke[premik_znaka_desno(i, self.geslo, stevke)]
+                else:
+                    nov_tekst += tekst[i]
+
+    def dekodiraj_cezar(self):
+        for i in range(self.dolzina):
+            if tekst[i] in abeceda:
+                nov_tekst += abeceda[premik_znaka_levo(i, self.geslo, abeceda)]
+            elif tekst[i] in stevke:
+                nov_tekst += stevke[premik_znaka_levo(i, self.geslo, stevke)]
+            else:
+                nov_tekst += tekst[i]
+
     def cezarjeva_sifra(self, zakodiraj=True):
-        if type(self.geslo) == int: #????????
+        if ustreznost_sub:
             tekst = self.besedilo.lower():
             nov_tekst = ""
             if zakodiraj:
-                for i in range(self.dolzina):
-                    if tekst[i] in abeceda:
-                        nov_tekst += abeceda[premik_znaka_desno(i, self.geslo, abeceda)]
-                    elif tekst[i] in stevke:
-                        nov_tekst += stevke[premik_znaka_desno(i, self.geslo, stevke)]
-                    else:
-                        nov_tekst += tekst[i]
+                zakodiraj_cezar(self) 
             else:
-                for i in range(self.dolzina):
-                    if tekst[i] in abeceda:
-                        nov_tekst += abeceda[premik_znaka_levo(i, self.geslo, abeceda)]
-                    elif tekst[i] in stevke:
-                        nov_tekst += stevke[premik_znaka_levo(i, self.geslo, stevke)]
-                    else:
-                        nov_tekst += tekst[i]
+                dekodiraj_cezar(self)    
             return nov_tekst
         else:
             raise Exception("Geslo more biti celo število.")
 
+    def zakodiraj_po_stevkah(self):
+        n = 0
+        for i in range(self.dolzina):
+            if tekst[i] in abeceda:
+                nov_tekst += abeceda[premik_znaka_desno(i, self.geslo[n], abeceda)]
+            elif tekst[i] in stevke:
+                nov_tekst += stevke[premik_znaka_desno(i, self.geslo[n], stevke)]
+            else:
+                nov_tekst += tekst[i]
+            n += 1
+            if n == self.dolzina_gesla:
+                n = 0
+
+    def dekodiraj_po_stevkah(self):
+        n = 0
+        for i in range(self.dolzina):
+            if tekst[i] in abeceda:
+                nov_tekst += abeceda[premik_znaka_levo(i, self.geslo[n], abeceda)]
+            elif tekst[i] in stevke:
+                nov_tekst += stevke[premik_znaka_levo(i, self.geslo[n], stevke)]
+            else:
+                nov_tekst += tekst[i]
+            n += 1
+            if n == self.dolzina_gesla:
+                n = 0
+
     def substitucija_po_stevkah(self, zakodiraj=True):
-        if type(self.geslo) == int: #????????
+        if ustreznost_sub:
             tekst = self.besedilo.lower()
             nov_tekst = ""
-            n = 0
             if zakodiraj:
-                for i in range(self.dolzina):
-                    if tekst[i] in abeceda:
-                        nov_tekst += abeceda[premik_znaka_desno(i, self.geslo[n], abeceda)]
-                    elif tekst[i] in stevke:
-                        nov_tekst += stevke[premik_znaka_desno(i, self.geslo[n], stevke)]
-                    else:
-                        nov_tekst += tekst[i]
-                    n += 1
-                    if n == self.dolzina_gesla:
-                        n = 0
+                zakodiraj_po_stevkah(self)
             else:
-                for i in range(self.dolzina):
-                    if tekst[i] in abeceda:
-                        nov_tekst += abeceda[premik_znaka_levo(i, self.geslo[n], abeceda)]
-                    elif tekst[i] in stevke:
-                        nov_tekst += stevke[premik_znaka_levo(i, self.geslo[n], stevke)]
-                    else:
-                        nov_tekst += tekst[i]
-                    n += 1
-                    if n == self.dolzina_gesla:
-                        n = 0
+                dekodiraj_po_stevkah(self)    
             return nov_tekst
         else:
             raise Exception("Geslo more biti številsko.")
@@ -136,33 +157,43 @@ class Besedilo:
             self.besedilo += " "
         return self.besedilo
     
+    @staticmethod
     def oba_v_tabeli(prvi, drugi):
         if prvi in abeceda_stevke_presledek and drugi in abeceda_stevke_presledek:
             return True
         else:
             return False
 
+    def ustreznost_poli(self):
+        for i in range(self.dolzina_gesla):
+            if self.geslo[i] not in abeceda_stevke_presledek:
+                return False
+        return True
+
     def poligrafska_substitucija(self):
-        tekst = sodo_besedilo(self).lower()
-        nov_tekst = ""
-        for i in range(0, self.dolzina, 2):
-            char1, char2 = tekst[i], tekst[i+1]
-            if oba_v_tabeli(char1, char2):
-                seznam, tabela = poli_seznam(self), poli_tabela(self)
-                indeks1, indeks2 = seznam.index(char1), seznam.index(char2)
-                pozicija1, pozicija2 = [indeks1 // 7, indeks1 % 7], [indeks2 // 7, indeks2 % 7]
-                if pozicija1[0] == pozicija2[0] or pozicija1[1] == pozicija2[1]:
-                    nova_pozicija1, nova_pozicija2 = pozicija2, pozicija1
+        if ustreznost_poli(self):
+            tekst = sodo_besedilo(self).lower()
+            nov_tekst = ""
+            for i in range(0, self.dolzina, 2):
+                char1, char2 = tekst[i], tekst[i+1]
+                if oba_v_tabeli(char1, char2):
+                    seznam, tabela = poli_seznam(self), poli_tabela(self)
+                    indeks1, indeks2 = seznam.index(char1), seznam.index(char2)
+                    pozicija1, pozicija2 = [indeks1 // 7, indeks1 % 7], [indeks2 // 7, indeks2 % 7]
+                    if pozicija1[0] == pozicija2[0] or pozicija1[1] == pozicija2[1]:
+                        nova_pozicija1, nova_pozicija2 = pozicija2, pozicija1
+                    else:
+                        nova_pozicija1, nova_pozicija2 = [pozicija1[0], pozicija2[1]], [pozicija2[0], pozicija1[1]]
+                    nov_tekst += tabela[nova_pozicija1[0]][nova_pozicija1[1]] + tabela[nova_pozicija2[0]][nova_pozicija2[1]]
                 else:
-                    nova_pozicija1, nova_pozicija2 = [pozicija1[0], pozicija2[1]], [pozicija2[0], pozicija1[1]]
-                nov_tekst += tabela[nova_pozicija1[0]][nova_pozicija1[1]] + tabela[nova_pozicija2[0]][nova_pozicija2[1]]
-            else:
-                nov_tekst += char1 + char 2
-        return nov_tekst
+                    nov_tekst += char1 + char 2
+            return nov_tekst
+        else:
+            raise Exception("Geslo ne sme vsebovati posebnih znakov.")
 
     ###############################################################################################
 
-    def preveri_ustreznost(self):
+    def ustreznost_xor(self):
         for i in range(self.dolzina):
             if self.besedilo[i] not in ang_abeceda_stevke:
                 return False
