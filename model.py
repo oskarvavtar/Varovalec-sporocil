@@ -10,7 +10,7 @@ class Besedilo:
     def __init__(self, besedilo, geslo=None):
         self.besedilo = besedilo
         self.dolzina = len(self.besedilo)
-        if geslo = None:
+        if geslo == None:
             pass
         else:
             self.geslo = geslo
@@ -64,10 +64,10 @@ class Besedilo:
         for i in range(self.dolzina):
             if tekst[i] in abeceda:
                 nov_tekst += abeceda[premik_znaka_desno(i, self.geslo, abeceda)]
-                elif tekst[i] in stevke:
-                    nov_tekst += stevke[premik_znaka_desno(i, self.geslo, stevke)]
-                else:
-                    nov_tekst += tekst[i]
+            elif tekst[i] in stevke:
+                nov_tekst += stevke[premik_znaka_desno(i, self.geslo, stevke)]
+            else:
+                nov_tekst += tekst[i]
 
     def dekodiraj_cezar(self):
         for i in range(self.dolzina):
@@ -80,7 +80,7 @@ class Besedilo:
 
     def cezarjeva_sifra(self, zakodiraj=True):
         if ustreznost_sub:
-            tekst = self.besedilo.lower():
+            tekst = self.besedilo.lower()
             nov_tekst = ""
             if zakodiraj:
                 zakodiraj_cezar(self) 
@@ -141,7 +141,7 @@ class Besedilo:
         return znaki
 
     def poli_tabela(self):
-        znaki = ustvari_seznam(self):
+        znaki = ustvari_seznam(self)
         tabela = []
         n = 0
         for i in range(6):
@@ -186,7 +186,7 @@ class Besedilo:
                         nova_pozicija1, nova_pozicija2 = [pozicija1[0], pozicija2[1]], [pozicija2[0], pozicija1[1]]
                     nov_tekst += tabela[nova_pozicija1[0]][nova_pozicija1[1]] + tabela[nova_pozicija2[0]][nova_pozicija2[1]]
                 else:
-                    nov_tekst += char1 + char 2
+                    nov_tekst += char1 + char2
             return nov_tekst
         else:
             raise Exception("Geslo ne sme vsebovati posebnih znakov.")
@@ -202,19 +202,18 @@ class Besedilo:
                 return False
         return True
 
-
     def xor(self):
-        if preveri_ustreznost:
+        if self.ustreznost_xor():
             nov_tekst = ""
             for i in range(self.dolzina):
                 char = self.besedilo[i]
                 char_key = self.geslo[i % self.dolzina_gesla]
                 nov_tekst += char(ord(char) ^ ord(char_key))
-            return nov_tekstv
+            return nov_tekst
         else:
             raise Exception("Besedilo mora biti sestavljeno le iz črk angelške abeceda in številk, zapisano brez presledkov.")
+    
 
-        
         
     
 
