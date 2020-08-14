@@ -7,7 +7,7 @@ ang_abeceda_stevke = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 
 class Besedilo:
 
-    def __init__(self, besedilo, geslo=None):
+    def __init__(self, besedilo, geslo=None, zakodiraj=None):
         self.besedilo = besedilo
         self.dolzina = len(self.besedilo)
         if geslo == None:
@@ -15,6 +15,10 @@ class Besedilo:
         else:
             self.geslo = geslo
             self.dolzina_gesla = len(self.geslo)
+        if zakodiraj == None:
+            pass
+        else:
+            self.zakodiraj = zakodiraj
         
 
     def __repr__(self):
