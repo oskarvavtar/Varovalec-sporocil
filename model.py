@@ -147,11 +147,11 @@ class Besedilo:
                 znaki.append(self.geslo[i])
         for znak in abeceda_stevke_presledek:
             if znak not in znaki:
-                znaki.append(char)
+                znaki.append(znak)
         return znaki
 
     def poli_tabela(self):
-        znaki = ustvari_seznam(self)
+        znaki = self.poli_seznam()
         tabela = []
         n = 0
         for i in range(6):
@@ -181,13 +181,15 @@ class Besedilo:
         return True
 
     def poligrafska_substitucija(self):
-        if ustreznost_poli(self):
-            tekst = sodo_besedilo(self).lower()
+        if self.geslo == None:
+            raise Exception("Prosim nastavi geslo.")
+        if self.ustreznost_poli():
+            tekst = self.sodo_besedilo().lower()
             nov_tekst = ""
             for i in range(0, self.dolzina, 2):
                 char1, char2 = tekst[i], tekst[i+1]
-                if oba_v_tabeli(char1, char2):
-                    seznam, tabela = poli_seznam(self), poli_tabela(self)
+                if self.oba_v_tabeli(char1, char2):
+                    seznam, tabela = self.poli_seznam(), self.poli_tabela()
                     indeks1, indeks2 = seznam.index(char1), seznam.index(char2)
                     pozicija1, pozicija2 = [indeks1 // 7, indeks1 % 7], [indeks2 // 7, indeks2 % 7]
                     if pozicija1[0] == pozicija2[0] or pozicija1[1] == pozicija2[1]:
@@ -224,9 +226,9 @@ class Besedilo:
             raise Exception("Besedilo mora biti sestavljeno le iz črk angelške abeceda in številk, zapisano brez presledkov.")
     
 if __name__ == "__main__":
-    besedilo = Besedilo("")
-    besedilo.nastavi_geslo("")
-    print(besedilo.xor())
+    besedilo = Besedilo("uibamac5aobmčv")
+    besedilo.nastavi_geslo("majmun")
+    print(besedilo.poligrafska_substitucija())
         
     
 
