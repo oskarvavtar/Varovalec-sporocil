@@ -203,28 +203,6 @@ class Besedilo:
         else:
             raise Exception("Geslo ne sme vsebovati posebnih znakov.")
 
-    ###############################################################################################
-
-    def ustreznost_xor(self):
-        for i in range(self.dolzina):
-            if self.besedilo[i] not in ang_abeceda_stevke:
-                return False
-        for i in range(len(self.geslo)):
-            if self.geslo[i] not in ang_abeceda_stevke:
-                return False
-        return True
-
-    def xor(self):
-        if self.ustreznost_xor():
-            nov_tekst = ""
-            for i in range(self.dolzina):
-                char = self.besedilo[i]
-                char_key = self.geslo[i % self.dolzina_gesla]
-                nov_tekst += chr(ord(char) ^ ord(char_key))
-            return nov_tekst
-        else:
-            raise Exception("Besedilo mora biti sestavljeno le iz črk angelške abeceda in številk, zapisano brez presledkov.")
-    
 if __name__ == "__main__":
     besedilo = Besedilo("uibamac5aobmčv")
     besedilo.nastavi_geslo("majmun")
