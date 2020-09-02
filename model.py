@@ -204,9 +204,9 @@ class Besedilo:
             raise Exception("Geslo ne sme vsebovati posebnih znakov.")
 
 if __name__ == "__main__":
-    besedilo = Besedilo("uibamac5aobmčv")
-    besedilo.nastavi_geslo("majmun")
-    print(besedilo.poligrafska_substitucija())
+    besedilo = Besedilo("č1šs5stms7š5uć")
+    besedilo.nastavi_geslo("235")
+    print(besedilo.cezarjeva_sifra())
         
     
 
