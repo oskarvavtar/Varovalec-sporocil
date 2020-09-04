@@ -14,7 +14,7 @@ Predvidena uporaba:
     <li>Osebi A in B v programu izbereta isti način kodiranja in isti ključ.</li>
     <li>Oseba A v program vpiše besedilo, ki ga želi poslati osebi B in pritisne na gumb <strong>Zakodiraj!</strong>. </li>
     <li>Varovalec sporočil vrne zakodirano besedilo, ki ga oseba a kopira in pošlje osebi B s poljubno aplikacijo za sporočanje.</li>
-    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb <stron>Dekodiraj!</strong> bo lahko prebrala originalno sporočilo.</li>
+    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb <strong>Dekodiraj!</strong> bo lahko prebrala originalno sporočilo.</li>
 </ol>
 
 Varovalec sporočil ponuja 4 različne načine kodiranja:
@@ -30,7 +30,7 @@ Pri raziskovanju o različnih metodah kodiranja sem si pomagal z naslednjo [sple
 ### Navodila za zagon programa
 <ol>
     <li>Klonirajte repozitorij</li>
-    <li>Poženite spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij/ '$ python spletni_vmesnik.py')</li>
+    <li>Poženite spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij/<code>$ python spletni_vmesnik.py</code>)</li>
     <li>Odprite <a href='http://127.0.0.1:8080/'>naslov</a></li>
 </ol>
 
