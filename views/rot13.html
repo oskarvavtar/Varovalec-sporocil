@@ -4,9 +4,9 @@
 <h1>VAROVALEC SPOROČIL</h1>
 <h2>ROT13</h2>
 
-<form action=...>
+<form action="/rot13" method="POST" target=_blank>
     <label for="besedilo">Vpiši besedilo:</label><br>
-    <textarea id="besedilo" name="besedilo" row="10" cols = "70"></textarea><br>
-    
-    <a href="/rot13/kodirano" target=_blank">Kodiraj!</a>
+    <input id="tekst" name="tekst" row="10" cols = "70"><br>
 
+    <button type="submit" name="kodiranje">Kodiraj!</button>
+</form>

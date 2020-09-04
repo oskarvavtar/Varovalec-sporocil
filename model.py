@@ -127,7 +127,7 @@ class Besedilo:
         return nov_tekst
 
     def substitucija_po_stevkah(self, zakodiraj=True):
-        if self.geslo == None:
+        if self.geslo is None:
             raise Exception("Prosim nastavi geslo.")
         if self.ustreznost_sub():
             tekst = self.besedilo.lower()
@@ -136,7 +136,7 @@ class Besedilo:
             else:
                 return self.dekodiraj_po_stevkah(tekst)    
         else:
-            raise Exception("Geslo more biti številsko.")
+            raise Exception("Geslo more biti naravno število.")
             
     ###############################################################################################
 
@@ -203,10 +203,7 @@ class Besedilo:
         else:
             raise Exception("Geslo ne sme vsebovati posebnih znakov.")
 
-if __name__ == "__main__":
-    besedilo = Besedilo("ćkdnoj udnoj")
-    besedilo.nastavi_geslo("235")
-    print(besedilo.substitucija_po_stevkah(False))
+
         
     
 

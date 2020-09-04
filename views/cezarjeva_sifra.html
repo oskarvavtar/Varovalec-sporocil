@@ -4,15 +4,14 @@
 <h1>VAROVALEC SPOROČIL</h1>
 <h2>CEZARJEVA ŠIFRA</h2>
 
-
-<form action=...>
+<form action="/cezarjeva-sifra" method="POST" target=_blank>
     <label for="kljuc">Vpiši ključ:</label><br>
     <input type="text" id="kljuc" name="kljuc"><br>
 
     <label for="besedilo">Vpiši besedilo:</label><br>
-    <textarea id="besedilo" name="besedilo" row="10" cols = "70"></textarea><br>
-    
-    <a href="/cezarjeva-sifra/zakodirano" target=_blank">Zakodiraj!</a>
+    <input id="tekst" name="tekst" row="10" cols = "70"><br>
 
-    <a href="/cezarjeva-sifra/dekodirano" target=_blank">Dekodiraj!</a>
+    <button type="submit" value=1 name="kodiranje">Zakodiraj!</button>
+
+    <button type="submit" value=0 name="kodiranje">Dekodiraj!</button>
 </form>

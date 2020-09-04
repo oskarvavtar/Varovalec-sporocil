@@ -1,19 +1,17 @@
 % import bottle
 % rebase("base.html")
 
-
 <h1>VAROVALEC SPOROČIL</h1>
 <h2>SUBSTITUCIJA+</h2>
 
-
-<form action=...>
+<form action="/substitucija-plus" method="POST" target=_blank>
     <label for="kljuc">Vpiši ključ:</label><br>
     <input type="text" id="kljuc" name="kljuc"><br>
 
     <label for="besedilo">Vpiši besedilo:</label><br>
-    <textarea id="tekst" name="tekst" row="10" cols = "70"></textarea><br>
+    <input id="tekst" name="tekst" row="10" cols = "70"><br>
 
-    <a href="/substitucija-plus/zakodirano" target=_blank">Zakodiraj!</a>
+    <button type="submit" value=1 name="kodiranje">Zakodiraj!</button>
 
-    <a href="/substitucija-plus/dekodirano" target=_blank">Dekodiraj!</a>
+    <button type="submit" value=0 name="kodiranje">Dekodiraj!</button>
 </form>

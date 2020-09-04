@@ -12,9 +12,9 @@ def main_page():
 def rot13():
     return bottle.template("rot13.html")
 
-@bottle.get("/rot13/kodirano")
+@bottle.post("/rot13")
 def rot13_kodiraj():
-    #tekst = 
+    tekst = bottle.request.forms.getunicode("tekst")
     
     model.besedilo = model.Besedilo(tekst)
     output = model.besedilo.rot13()
@@ -26,25 +26,19 @@ def rot13_kodiraj():
 def cezarjeva_sifra():
     return bottle.template("cezarjeva_sifra.html")
 
-@bottle.get("/cezarjeva-sifra/zakodirano")
-def cezarjeva_sifra_zakodiraj():
-    #tekst =
-    #kljuc =
+@bottle.post("/cezarjeva-sifra")
+def cezarjeva_sifra_kodiraj():
+    kljuc = bottle.request.forms.getunicode("kljuc")
+    tekst = bottle.request.forms.getunicode("tekst")
+    kodiranje = bool(int(bottle.request.forms.get("kodiranje")))
 
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
-    output = model.besedilo.cezarjeva_sifra(True)
-
-    return bottle.template("izpis.html", output = output)
-
-@bottle.get("/cezarjeva-sifra/dekodirano")
-def cezarjeva_sifra_dekodiraj():
-    #tekst =
-    #kljuc =
     
-    model.besedilo = model.Besedilo(tekst)
-    model.besedilo.nastavi_geslo(kljuc)
-    output = model.besedilo.cezarjeva_sifra(False)
+    try:
+        output = model.besedilo.cezarjeva_sifra(kodiranje)
+    except Exception as err:
+        output = err.args[0]
 
     return bottle.template("izpis.html", output = output)
 
@@ -53,28 +47,19 @@ def cezarjeva_sifra_dekodiraj():
 def substitucija_plus():
     return bottle.template("substitucija_plus.html")
 
-@bottle.get("/substitucija-plus/zakodirano")
-def substitucija_plus_zakodiraj():
-    #kljuc = str(bottle.request.query["kljuc"])
-    #tekst = str(bottle.request.query["tekst"])
-    #print(kljuc)
-    tekst = "to je besedilo"
-    kljuc = "12345"
+@bottle.post("/substitucija-plus")
+def substitucija_plus_kodiraj():
+    kljuc = bottle.request.forms.getunicode("kljuc")
+    tekst = bottle.request.forms.getunicode("tekst")
+    kodiranje = bool(int(bottle.request.forms.get("kodiranje")))
 
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
-    output = model.besedilo.substitucija_po_stevkah(True)
 
-    return bottle.template("izpis.html", output = output)
-
-@bottle.get("/substitucija-plus/dekodirano")
-def substitucija_plus_dekodiraj():
-    #tekst =
-    #kljuc =
-
-    model.besedilo = model.Besedilo(tekst)
-    model.besedilo.nastavi_geslo(kljuc)
-    output = model.besedilo.substitucija_po_stevkah(False)
+    try: 
+        output = model.besedilo.substitucija_po_stevkah(kodiranje)
+    except Exception as err:
+        output = err.args[0]
 
     return bottle.template("izpis.html", output = output)
     
@@ -83,14 +68,19 @@ def substitucija_plus_dekodiraj():
 def poligrafska_substitucija():
     return bottle.template("poligrafska_substitucija.html")
 
-@bottle.get("/poligrafska-substitucija/kodirano")
+@bottle.post("/poligrafska-substitucija")
 def poligrafska_substitucija_kodiraj():
-    #tekst = "to je tekst"
-    #kljuc = "to je kljuc"
-
+    kljuc = bottle.request.forms.getunicode("kljuc")
+    tekst = bottle.request.forms.getunicode("tekst")
+    
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
-    output = model.besedilo.poligrafska_substitucija()
+    
+
+    try: 
+        output = model.besedilo.poligrafska_substitucija()
+    except Exception as err:
+        output = err.args[0]
 
     return bottle.template("izpis.html", output = output)
 
