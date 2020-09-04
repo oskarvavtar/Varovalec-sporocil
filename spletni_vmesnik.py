@@ -17,7 +17,11 @@ def rot13_kodiraj():
     tekst = bottle.request.forms.getunicode("tekst")
     
     model.besedilo = model.Besedilo(tekst)
-    output = model.besedilo.rot13()
+    
+    try: 
+        output = model.besedilo.rot13()
+    except Exception as err:
+        output = err.args[0]
 
     return bottle.template("izpis.html", output = output) 
 
@@ -76,7 +80,6 @@ def poligrafska_substitucija_kodiraj():
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
     
-
     try: 
         output = model.besedilo.poligrafska_substitucija()
     except Exception as err:

@@ -53,6 +53,8 @@ class Besedilo:
         return True
     
     def rot13(self):
+        if self.besedilo == "":
+            raise Exception("Prosim vpiši besedilo.")
         tekst = self.besedilo.lower()
         nov_tekst = ""
         for i in range(self.dolzina):
@@ -85,8 +87,8 @@ class Besedilo:
         return nov_tekst
 
     def cezarjeva_sifra(self, zakodiraj=True):
-        if self.geslo == None:
-            raise Exception("Prosim nastavi geslo.")
+        if self.geslo == "" or self.besedilo == "":
+            raise Exception("Prosim nastavi manjkajoči parameter.")
         if self.ustreznost_sub():
             tekst = self.besedilo.lower()
             if zakodiraj:
@@ -127,8 +129,8 @@ class Besedilo:
         return nov_tekst
 
     def substitucija_po_stevkah(self, zakodiraj=True):
-        if self.geslo is None:
-            raise Exception("Prosim nastavi geslo.")
+        if self.geslo == "" or self.besedilo == "":
+            raise Exception("Prosim nastavi manjkajoči parameter.")
         if self.ustreznost_sub():
             tekst = self.besedilo.lower()
             if zakodiraj:
@@ -181,8 +183,8 @@ class Besedilo:
         return True
 
     def poligrafska_substitucija(self):
-        if self.geslo == None:
-            raise Exception("Prosim nastavi geslo.")
+        if self.geslo == "" or self.besedilo == "":
+            raise Exception("Prosim nastavi manjkajoči parameter.")
         if self.ustreznost_poli():
             tekst = self.sodo_besedilo().lower()
             nov_tekst = ""
