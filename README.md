@@ -17,6 +17,8 @@ Predvidena uporaba:
     <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb <strong>Dekodiraj!</strong> bo lahko prebrala originalno sporočilo.</li>
 </ol>
 
+Ko program izpiše zakodirano/dekodirano besedilo, odpre nov zavihek, da lahko uporabnik (npr. daljše) sporočilo ohrani in vseeno uporablja program naprej.
+
 Varovalec sporočil ponuja 4 različne načine kodiranja:
 <ul>
     <li>ROT13</li>
