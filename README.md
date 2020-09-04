@@ -1,4 +1,4 @@
-# Varovalec-sporocil
+# Varovalec sporočil
 
 ## Projekt pri predmetu Uvod v programiranje
 
@@ -11,10 +11,10 @@ Varovalec sporočil je orodje namenjeno kodiranju sporočil med ljudmi, ki se pr
 
 Predvidena uporaba:
 <ol>
-    <li>Osebi A in B v programu izbereta isti način kodiranja in isti ključ.<li>
-    <li>Oseba A v program vpiše besedilo, ki ga želi poslati osebi B in pritisne na gumb **Zakodiraj!**. </li>
+    <li>Osebi A in B v programu izbereta isti način kodiranja in isti ključ.</li>
+    <li>Oseba A v program vpiše besedilo, ki ga želi poslati osebi B in pritisne na gumb __Zakodiraj!__. </li>
     <li>Varovalec sporočil vrne zakodirano besedilo, ki ga oseba a kopira in pošlje osebi B s poljubno aplikacijo za sporočanje.</li>
-    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb **Dekodiraj!** bo lahko prebrala originalno sporočilo.
+    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb __Dekodiraj!__ bo lahko prebrala originalno sporočilo.</li>
 </ol>
 
 Varovalec sporočil ponuja 4 različne načine kodiranja:
@@ -25,7 +25,7 @@ Varovalec sporočil ponuja 4 različne načine kodiranja:
     <li>Poligrafska substitucija</li>
 </ul>
 
-Pri raziskovanju o različnih metodah kodiranja sem si pomagal z naslednjo [spletno stranjo](http://www.crypto-it.net/eng/simple/index.html)
+Pri raziskovanju o različnih metodah kodiranja sem si pomagal z naslednjo [spletno stranjo](http://www.crypto-it.net/eng/simple/index.html).
 
 ### Navodila za zagon programa
 <ol>
