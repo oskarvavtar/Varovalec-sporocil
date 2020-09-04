@@ -31,7 +31,6 @@ def cezarjeva_sifra_zakodiraj():
     #tekst =
     #kljuc =
 
-    
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
     output = model.besedilo.cezarjeva_sifra(True)
@@ -42,7 +41,6 @@ def cezarjeva_sifra_zakodiraj():
 def cezarjeva_sifra_dekodiraj():
     #tekst =
     #kljuc =
-
     
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)
@@ -57,9 +55,10 @@ def substitucija_plus():
 
 @bottle.get("/substitucija-plus/zakodirano")
 def substitucija_plus_zakodiraj():
-    #tekst = str(bottle.request.query["besedilo"])
     #kljuc = str(bottle.request.query["kljuc"])
-    tekst = "challe salle"
+    #tekst = str(bottle.request.query["tekst"])
+    #print(kljuc)
+    tekst = "to je besedilo"
     kljuc = "12345"
 
     model.besedilo = model.Besedilo(tekst)
@@ -74,7 +73,7 @@ def substitucija_plus_dekodiraj():
     #kljuc =
 
     model.besedilo = model.Besedilo(tekst)
-    model.besedilo,nastavi_geslo(kljuc)
+    model.besedilo.nastavi_geslo(kljuc)
     output = model.besedilo.substitucija_po_stevkah(False)
 
     return bottle.template("izpis.html", output = output)
@@ -86,8 +85,8 @@ def poligrafska_substitucija():
 
 @bottle.get("/poligrafska-substitucija/kodirano")
 def poligrafska_substitucija_kodiraj():
-    #tekst =
-    #kljuc =
+    #tekst = "to je tekst"
+    #kljuc = "to je kljuc"
 
     model.besedilo = model.Besedilo(tekst)
     model.besedilo.nastavi_geslo(kljuc)

@@ -45,8 +45,8 @@ class Besedilo:
             nov_indeks += len(abc)
         return nov_indeks
 
-    @staticmethod
-    def ustreznost_sub():
+    #@staticmethod
+    def ustreznost_sub(self):
         for i in range(self.dolzina_gesla):
             if self.geslo[i] not in stevke:
                 return False
@@ -95,7 +95,7 @@ class Besedilo:
                 return self.dekodiraj_cezar(tekst)    
         else:
             raise Exception("Geslo more biti naravno število.")
-
+    
     def zakodiraj_po_stevkah(self, tekst):
         nov_tekst = ""
         n = 0
@@ -137,7 +137,7 @@ class Besedilo:
                 return self.dekodiraj_po_stevkah(tekst)    
         else:
             raise Exception("Geslo more biti številsko.")
-
+            
     ###############################################################################################
 
     def poli_seznam(self):
@@ -204,9 +204,9 @@ class Besedilo:
             raise Exception("Geslo ne sme vsebovati posebnih znakov.")
 
 if __name__ == "__main__":
-    besedilo = Besedilo("č1šs5stms7š5uć")
+    besedilo = Besedilo("ćkdnoj udnoj")
     besedilo.nastavi_geslo("235")
-    print(besedilo.cezarjeva_sifra())
+    print(besedilo.substitucija_po_stevkah(False))
         
     
 
