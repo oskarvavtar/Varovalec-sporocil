@@ -12,9 +12,9 @@ Varovalec sporočil je orodje namenjeno kodiranju sporočil med ljudmi, ki se pr
 Predvidena uporaba:
 <ol>
     <li>Osebi A in B v programu izbereta isti način kodiranja in isti ključ.</li>
-    <li>Oseba A v program vpiše besedilo, ki ga želi poslati osebi B in pritisne na gumb __Zakodiraj!__. </li>
+    <li>Oseba A v program vpiše besedilo, ki ga želi poslati osebi B in pritisne na gumb <strong>Zakodiraj!</strong>. </li>
     <li>Varovalec sporočil vrne zakodirano besedilo, ki ga oseba a kopira in pošlje osebi B s poljubno aplikacijo za sporočanje.</li>
-    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb __Dekodiraj!__ bo lahko prebrala originalno sporočilo.</li>
+    <li>Oseba B prejeto sporočilo kopira in prilepi v program. Po stisku na gumb <stron>Dekodiraj!</strong> bo lahko prebrala originalno sporočilo.</li>
 </ol>
 
 Varovalec sporočil ponuja 4 različne načine kodiranja:
