@@ -96,7 +96,7 @@ class Besedilo:
             else:
                 return self.dekodiraj_cezar(tekst)    
         else:
-            raise Exception("Geslo more biti naravno število.")
+            raise Exception("Ključ more biti naravno število.")
     
     def zakodiraj_po_stevkah(self, tekst):
         nov_tekst = ""
@@ -138,7 +138,7 @@ class Besedilo:
             else:
                 return self.dekodiraj_po_stevkah(tekst)    
         else:
-            raise Exception("Geslo more biti naravno število.")
+            raise Exception("Ključ more biti naravno število.")
             
     ###############################################################################################
 
@@ -203,7 +203,7 @@ class Besedilo:
                     nov_tekst += char1 + char2
             return nov_tekst
         else:
-            raise Exception("Geslo ne sme vsebovati posebnih znakov.")
+            raise Exception("Ključ ne sme vsebovati posebnih znakov.")
 
 
         
